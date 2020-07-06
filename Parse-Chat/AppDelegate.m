@@ -23,6 +23,9 @@
       configuration.server = @"https://blooming-thicket-89345.herokuapp.com/parse";
     }];
     [Parse initializeWithConfiguration:configuration];
+    
+    
+    
     return YES;
 }
 
