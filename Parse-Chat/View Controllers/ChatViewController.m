@@ -23,6 +23,8 @@
     [super viewDidLoad];
     self.chatTableView.delegate = self;
     self.chatTableView.dataSource = self;
+    self.chatTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshOnTimer) userInfo:nil repeats:YES];
     // Do any additional setup after loading the view.
 }
@@ -59,6 +61,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChatCell *cell = [self.chatTableView dequeueReusableCellWithIdentifier:@"ChatCell"];
+    cell.chatBubbleView.layer.cornerRadius = 16;
+    cell.chatBubbleView.clipsToBounds = YES;
+    cell.chatBubbleView.backgroundColor = [UIColor blueColor];
     NSDictionary *chatMsg = self.posts[indexPath.row];
     PFUser *user = chatMsg[@"user"];
     if (user != nil) {
